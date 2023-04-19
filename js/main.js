@@ -1,5 +1,6 @@
 
 let sliderElement = document.getElementById("slider");
+let sideSliderElement = document.getElementById("sideSlider");
 let album=["./img/01.webp","./img/02.webp","./img/03.webp","./img/04.webp","./img/05.webp"]
 // ,"./img/02.webp","./img/03.webp"
 // let x = document.createElement("img");
@@ -18,9 +19,16 @@ for (let i = 0; i < album.length; i++) {
     x.src = image
     x.className = "slide hidden";
     sliderElement.append(x);
+    let y = document.createElement("img");
+    y.src = image
+    y.className = "sideImg opacity05";
+    sideSliderElement.append(y);
 }
 let slideElements = document.getElementsByClassName("slide");
+let sideElements = document.getElementsByClassName("sideImg");
 slideElements[0].classList.remove("hidden")
+sideElements[0].classList.add("greenBorder")
+sideElements[0].classList.remove("opacity05")
 console.log(slideElements)
 btnNext.addEventListener("click", function(){
 
@@ -28,13 +36,17 @@ btnNext.addEventListener("click", function(){
 
         for (let c = 0; c < slideElements.length; c++) {
             const slide = slideElements[c];
-
+            const sideSlide= sideElements[c]
             if(c == nextSlide ) {
                 slide.classList.remove("hidden");
+                sideSlide.classList.add("greenBorder")
+                sideSlide.classList.remove("opacity05")
                 console.log("Slide corrente: " + c + " -> Va visualizzata");
             } else {
                 slide.classList.add("hidden");
                 console.log("Slide corrente: " + c + " -> Va nascosta");
+                sideSlide.classList.add("opacity05")
+                sideSlide.classList.remove("greenBorder")
             }
         }
     
@@ -52,6 +64,7 @@ btnBack.addEventListener("click", function(){
     
         for (let c = 0; c < slideElements.length; c++) {
                 const slide = slideElements[c];
+                const sideSlide= sideElements[c]
 
                 if (nextSlide<2) {
                     nextSlide=6
@@ -59,9 +72,13 @@ btnBack.addEventListener("click", function(){
 
             if(c == nextSlide-2 ) {
                 slide.classList.remove("hidden");
+                sideSlide.classList.add("greenBorder")
+                sideSlide.classList.remove("opacity05")
                 console.log("Slide corrente: " + c + " -> Va visualizzata");
             } else {
                 slide.classList.add("hidden");
+                sideSlide.classList.add("opacity05")
+                sideSlide.classList.remove("greenBorder")
                 console.log("Slide corrente: " + c + " -> Va nascosta");
             }
         }
@@ -72,3 +89,8 @@ btnBack.addEventListener("click", function(){
 
 });
 
+
+
+// sideSliderElement.addEventListener("click", function(e){
+//     console.log(indexOf(e))
+// })
