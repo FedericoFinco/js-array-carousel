@@ -89,7 +89,20 @@ btnBack.addEventListener("click", function(){
 
 });
 
-
+for (let i = 0; i < sideElements.length; i++) {
+    sideElements[i].addEventListener("click", function () {
+        slideElements[0].classList.add("hidden")
+        sideElements[0].classList.remove("greenBorder")
+        sideElements[0].classList.add("opacity05")
+        slideElements[nextSlide].classList.add("hidden");
+        slideElements[i].classList.remove("hidden");
+        sideElements[nextSlide].classList.add("opacity05");
+        sideElements[nextSlide].classList.remove("greenBorder");
+        sideElements[i].classList.add("greenBorder");
+        sideElements[i].classList.remove("opacity05");
+        nextSlide = i;
+    });
+}
 
 // sideSliderElement.addEventListener("click", function(e){
 //     console.log(indexOf(e))
